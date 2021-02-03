@@ -107,4 +107,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 
 NPM_PACKAGES="${HOME}/.npm-packages"
+# Add npm packages to path
 export PATH="$PATH:$NPM_PACKAGES/bin"
+# Add python packages to path
+export PATH="$PATH:$HOME/.local/bin"
