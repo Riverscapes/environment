@@ -1,0 +1,28 @@
+alias g='git '
+alias ga='git add '
+alias gb='git branch -a'
+alias gbb='git branch --set-upstream  origin/'
+alias gc='git commit -m '
+alias gca='git commit -am '
+alias gf='git fetch'
+alias gpl='git pull'
+alias gpu='git push'
+alias grb='git rebase --continue'
+
+function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
+
+function git_line () {
+    git --no-pager log -n $1 --graph --pretty=oneline --format=format:"%Cgreen%<(7,trunc)%aN %C(auto)%h %d%Creset %s (%cd)" --abbrev-commit --date=short --decorate --all;
+}
+
+function ggl 
+{ 
+    while true; do
+        clear;
+        git_line $1
+        sleep 5;
+    done
+}
+
+alias gg='ggl 30'
+alias gs='git_line 1; git status'
