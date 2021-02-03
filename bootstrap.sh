@@ -1,11 +1,10 @@
 #!/bin/bash
+# Fail if any step fails
+set -eu
 
-set -eux
-
+# Some preliminary dependencies
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
-sudo apt-get install curl wget git build-essential libssl-dev gcc g++ make -y
-sudo apt-get install zsh git vim
-
+sudo apt-get install curl wget git build-essential libssl-dev gcc g++ make zsh vim -y
 sudo apt-get install software-properties-common awscli locales -y
 
 # Python
@@ -30,7 +29,14 @@ read -p "Enter Git Name (John Smith): "  name
 git config --global user.email $email
 git config --global user.name $name
 
-# ZSH
+# Now install Oh-my-sh
+# Now install Oh-my-sh
+echo "------------------------------------------------"
+echo "Now we're going to install OhMyZsh."
+echo "Follow the instructions and type 'exit' when it drops you into that prompt"
+echo "------------------------------------------------"
+read -p "(enter to continue)"  nope
+
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 # Import a few config files to make things the same
 wget https://raw.githubusercontent.com/MattReimer/environment/master/nar-ys.zsh-theme -O ~/.oh-my-zsh/custom/themes/nar-ys.zsh-theme
