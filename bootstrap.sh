@@ -29,6 +29,18 @@ read -p "Enter Git Name (John Smith): "  name
 git config --global user.email $email
 git config --global user.name $name
 
+# Now we build TauDEM
+# Prerequisites first:
+sudo apt-get update && apt-get install -y cmake mpich \
+    libgtest-dev libboost-test-dev libnetcdf-dev
+# Clone the right version of TauDEM
+git clone --depth 1 -b v5.3.8 https://github.com/dtarb/taudem.git ~/code/taudem
+## Compile Main taudem repo ##
+mkdir -p  ~/code/taudem/bin
+cd ~/code/taudem/src
+make
+
+
 # Now install Oh-my-sh
 # Now install Oh-my-sh
 echo "------------------------------------------------"
