@@ -1,5 +1,5 @@
 # This function shows N lines of git history
-function gl () {
+function git_line () {
     git --no-pager log -n $1 --graph --pretty=oneline --format=format:"%Cgreen%<(7,trunc)%aN %C(auto)%h %d%Creset %s (%cd)" --abbrev-commit --date=short --decorate --all;
 }
 
@@ -8,7 +8,7 @@ function ggl
 { 
     while true; do
         clear;
-        gl $1
+        git_line $1
         sleep 2;
     done
 }
@@ -16,4 +16,4 @@ function ggl
 # gg is the quick history view that shows 30 lines of git history and refreshes every 2 seconds
 alias gg='ggl 30'
 # Shortcut for git status. Also shows one single line of git history
-alias gs='gl 1; git status'
+alias gs='git_line 1; git status'
