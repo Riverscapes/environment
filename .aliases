@@ -1,28 +1,19 @@
-alias g='git '
-alias ga='git add '
-alias gb='git branch -a'
-alias gbb='git branch --set-upstream  origin/'
-alias gc='git commit -m '
-alias gca='git commit -am '
-alias gf='git fetch'
-alias gpl='git pull'
-alias gpu='git push'
-alias grb='git rebase --continue'
-
-function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
-
-function git_line () {
+# This function shows N lines of git history
+function gl () {
     git --no-pager log -n $1 --graph --pretty=oneline --format=format:"%Cgreen%<(7,trunc)%aN %C(auto)%h %d%Creset %s (%cd)" --abbrev-commit --date=short --decorate --all;
 }
 
+# This function shows N lines of git history and refreshes every 2 seconds
 function ggl 
 { 
     while true; do
         clear;
-        git_line $1
-        sleep 5;
+        gl $1
+        sleep 2;
     done
 }
 
+# gg is the quick history view that shows 30 lines of git history and refreshes every 2 seconds
 alias gg='ggl 30'
-alias gs='git_line 1; git status'
+# Shortcut for git status. Also shows one single line of git history
+alias gs='gl 1; git status'

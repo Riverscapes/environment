@@ -11,8 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="nar-ys"
 
 plugins=(
-  git 
-  virtualenv
+  git
 )
 
 # Set list of themes to pick from when loading at random
@@ -106,9 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
 
-NPM_PACKAGES="${HOME}/.npm-packages"
-# Add npm packages to path
-export PATH="$PATH:$NPM_PACKAGES/bin"
-# Add python packages to path
+# Add rstools python packages to path
 export PATH="$PATH:$HOME/.local/bin"
+# Add taudem to the command line
 export PATH="$PATH:$HOME/code/taudem"
